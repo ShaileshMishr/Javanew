@@ -1,0 +1,60 @@
+package com.attr;
+
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+public class S2 extends HttpServlet{
+	
+
+protected void processRequest(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+	response.setContentType("text/html");
+		
+	try(PrintWriter out = response.getWriter()){
+		out.println("<html");
+		out.println("<head>");
+		out.println("<title>Servlet S1</title>");
+		out.println("</head");
+		out.println("<body>");
+		
+	
+	int nn1=Integer.parseInt(request.getParameter("n1"));
+	int nn2=Integer.parseInt(request.getParameter("n2"));
+	
+	// multiplication or product
+	int p=nn1*nn2;
+	
+	// get attribute from request object
+	int sum = (int)request.getAttribute("sum");
+	
+	// request .... request dispatcher
+	
+	RequestDispatcher rd = request.getRequestDispatcher("s2");
+	rd.forward(request, response);
+		
+		
+		out.println("</body>");
+		out.println("/html");
+	}
+	
+}
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}
