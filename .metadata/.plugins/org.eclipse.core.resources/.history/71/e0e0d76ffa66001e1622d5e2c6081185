@@ -1,7 +1,0 @@
-package com.servlets;
-
-import jakarta.servlet.GenericServlet;
-
-public class SecondServlet extends GenericServlet {
-
-}
